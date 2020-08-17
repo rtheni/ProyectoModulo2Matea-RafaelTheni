@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 
+import Login from './components/Login';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,35 +13,50 @@ import TextField from '@material-ui/core/TextField';
 
 import matelogo from './img/matea_logo.png';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 function App() {
   return (
-    <div>
-      <AppBar>
-        <Toolbar>
-          <img src={matelogo} alt="matea logo"/>
-          <Typography variant="h6" noWrap>
-            Mateify
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Card>
-        <CardContent>
-          <img src={matelogo} alt="matea logo"/>
-          <Typography>
-            Ingresar
-          </Typography>
-          <form noValidate autoComplete="off">
-            <TextField id="outlined-basic" label="Correo Electronico" variant="outlined" />
-            <TextField id="outlined-basic" label="Contraseña" variant="outlined" />
-          </form>
-          <Button variant="contained" color="secondary" href="">COMENZAR A CREAR PLAYLISTS</Button>
-          <Button href="">?HAS OLVIDADO LA CONTRASEÑA?</Button>
-          <Typography>?NO TIENES CUENTA?</Typography>
-          <Button variant="contained" href="">REGISTRATE</Button>
-        </CardContent>
-      </Card>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/about">
+          </Route>
+          <Route path="/users">
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
+
+function Home() {
+  return <Login />
+}
+
 
 export default App;
