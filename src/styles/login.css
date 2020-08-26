@@ -2,9 +2,14 @@ img{
     height: 50px;
     width: 55,398457583547557840616966580975px;
 }
-
+body{
+    background-color: #f9f9f9;
+}
 *{
     text-align: center;
+}
+.playlistContent{
+    margin-top: 150px;
 }
 .loginCardContent{
     margin: 100px 120px 0px 120px;

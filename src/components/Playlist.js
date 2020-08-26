@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Login from './Login'
+import styles from '../styles/login.css'
+
+import songDataList from '../database/songData.json';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -29,6 +32,35 @@ import {
 } from "react-router-dom";
 
 function Playlist() {
+    const [inputSearch, setSearchValue] = useState("");
+    const [filterSong, setArrayValue] = useState([]);
+
+    const saveSearchValue = (e) => {
+        setSearchValue(e.target.value);
+        validateSong()
+    };
+
+    const validateSearch = (e) => {
+        if (e.name.toLowerCase().includes(inputSearch.toLowerCase())){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    const validateSong = () => {
+        setArrayValue(null);
+        setArrayValue(songDataList.filter(validateSearch));
+        console.log(filterSong);
+        if (filterSong.length > 0){
+            console.log("si tiene canciones")
+        }else {
+
+            console.log("no tiene canciones")
+        }
+    }
+
     return (
         <Router>
             <div>
@@ -36,7 +68,7 @@ function Playlist() {
                     <Route exact path="/playlist">
                         <AppBar>
                             <Toolbar>
-                                <Link to="/">
+                                <Link to="/login">
                                     <img src={matelogo} alt="matea logo"/>
                                     <Typography variant="h6" noWrap>
                                         Mateify
@@ -52,10 +84,12 @@ function Playlist() {
                                 </IconButton>
                             </Toolbar>
                         </AppBar>
+                        <div className="playlistContent">
                         <form noValidate autoComplete="off">
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+                            <TextField id="outlined-basic" label="Buscar" variant="outlined" onChange={saveSearchValue}/>
                         </form>
                         <Card>
+                            <h2>Resultados</h2>
                             <CardContent>
                                 <TableContainer component={Paper}>
                                     <Table aria-label="simple table">
@@ -69,20 +103,26 @@ function Playlist() {
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
-                                        <div><p>No hay resultados: utiliza la barra de busqueda para encontrar canciones</p></div>
-                                            <TableRow key="">
-                                            <TableCell component="th" scope="row"></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell align="right"></TableCell>
-                                            </TableRow>
+                                            {filterSong.map ((song) => (
+                                                <TableRow key={song.uuid}>
+                                                    <TableCell component="th" scope="row">{song.name}</TableCell>
+                                                    <TableCell>{song.artist.name}</TableCell>
+                                                    <TableCell>{song.album}</TableCell>
+                                                    <TableCell>{song.duration}</TableCell>
+                                                    <TableCell align="right"><button>agregar</button></TableCell>
+                                                </TableRow>
+                                            ))}
+                                                <div><p>No hay resultados: utiliza la barra de busqueda para encontrar canciones</p></div>
+                                        
+                                        
+                                            
                                         </TableBody>
                                     </Table>
                                 </TableContainer>
                             </CardContent>
                         </Card>
                         <Card>
+                            <h2>Tu playlist</h2>
                             <CardContent>
                                 <TableContainer component={Paper}>
                                     <Table aria-label="simple table">
@@ -109,6 +149,7 @@ function Playlist() {
                                 </TableContainer>
                             </CardContent>
                         </Card>
+                        </div>
                     </Route>
                     <Route path="/" component={Login} />
                 </Switch>

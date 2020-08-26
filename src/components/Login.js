@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PList from './Playlist.js';
+import error from './LoginError.js';
 import styles from '../styles/login.css';
 
 import userDataList from '../database/userData.json';
@@ -13,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import matelogo from '../img/matea_logo.png';
+import redlock from '../img/red-lock.gif';
 
 import {
     BrowserRouter as Router,
@@ -21,7 +23,10 @@ import {
     useHistory,
 } from "react-router-dom";
 
+
 const Login = () => {
+    const history = useHistory();
+    
     const [inputEmail, setEmailValue] = useState("");
     const [inputPass, setPassValue] = useState("");
 
@@ -41,15 +46,13 @@ const Login = () => {
         }
     }
 
-    const history = useHistory();
-
     const validateLogin = () => {
         const FilterUser = userDataList.filter(validateInputs);
         console.log(FilterUser);
         if (FilterUser.length > 0){
-            history.push("/playlist")
+            history.replace("/playlist")
         }else {
-            history.push("/loginerror")
+            history.replace("/loginerror")
         }
     }
 
@@ -57,7 +60,7 @@ const Login = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route exact path="/">
+                    <Route exact path="/login">
                         <AppBar>
                             <Toolbar className="loginHeader">
                                 <img src={matelogo} alt="matea logo"/>
@@ -68,7 +71,7 @@ const Login = () => {
                         </AppBar>
                         <Card className="loginCardContent">
                             <CardContent>
-                                <img src={matelogo} alt="matea logo"/>
+                                <img src={redlock} alt="matea logo"/>
                                 <Typography>
                                     Ingresar
                                 </Typography>
@@ -76,9 +79,9 @@ const Login = () => {
                                     <TextField type="email" onChange={saveEmailValue} id="outlined-basic" label="Correo Electronico" variant="outlined" />
                                     <TextField type="password" onChange={savePassValue}  id="outlined-basic" label="Contraseña" variant="outlined" />
                                     <Button variant="contained" color="secondary" onClick={validateLogin}>COMENZAR A CREAR PLAYLISTS</Button>
-                                <Button href="">?HAS OLVIDADO LA CONTRASEÑA?</Button>
+                                <Button href="">¿HAS OLVIDADO LA CONTRASEÑA?</Button>
                                 <Typography>
-                                    ?NO TIENES CUENTA?
+                                ¿NO TIENES CUENTA?
                                 </Typography>
                                 <Button variant="contained" href="">REGISTRATE</Button>
                                 </form>
@@ -86,6 +89,7 @@ const Login = () => {
                         </Card>
                     </Route>
                     <Route path="/playlist" component={PList} />
+                    <Route path="/loginerror" component={error} />
                 </Switch>
             </div>
         </Router>

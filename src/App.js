@@ -9,9 +9,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  useHistory
 } from "react-router-dom";
 
 function App() {
+  const history = useHistory()
   return (
     <Router>
       <div>
@@ -22,7 +24,7 @@ function App() {
           <Route path="/playlist">
             <PList />
           </Route>
-          <Route path="/">
+          <Route path="/login">
             <Login />
           </Route>
         </Switch>
