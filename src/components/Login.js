@@ -1,5 +1,8 @@
-import React from 'react';
-import PList from './Playlist.js'
+import React, { useState } from 'react';
+import PList from './Playlist.js';
+import styles from '../styles/login.css';
+
+import userDataList from '../database/userData.json';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,47 +18,77 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    useHistory,
 } from "react-router-dom";
 
 const Login = () => {
+    const [inputEmail, setEmailValue] = useState("");
+    const [inputPass, setPassValue] = useState("");
+
+    const saveEmailValue = (e) => {
+        setEmailValue(e.target.value);
+    };
+    const savePassValue = (e) => {
+        setPassValue(e.target.value);
+    };
+
+    const validateInputs = (e) => {
+        if (e.email === inputEmail && e.password === inputPass){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    const history = useHistory();
+
+    const validateLogin = () => {
+        const FilterUser = userDataList.filter(validateInputs);
+        console.log(FilterUser);
+        if (FilterUser.length > 0){
+            history.push("/playlist")
+        }else {
+            history.push("/loginerror")
+        }
+    }
+
     return(
         <Router>
             <div>
                 <Switch>
                     <Route exact path="/">
                         <AppBar>
-                            <Toolbar>
+                            <Toolbar className="loginHeader">
                                 <img src={matelogo} alt="matea logo"/>
                                 <Typography variant="h6" noWrap>
                                     Mateify
                                 </Typography>
                             </Toolbar>
                         </AppBar>
-                        <Card>
+                        <Card className="loginCardContent">
                             <CardContent>
                                 <img src={matelogo} alt="matea logo"/>
                                 <Typography>
                                     Ingresar
                                 </Typography>
-                                <form noValidate autoComplete="off">
-                                    <TextField id="outlined-basic" label="Correo Electronico" variant="outlined" />
-                                    <TextField id="outlined-basic" label="Contraseña" variant="outlined" />
-                                </form>
-                                <Link to="/playlist" role="button"><Button variant="contained" color="secondary">COMENZAR A CREAR PLAYLISTS</Button></Link>
+                                <form noValidate autoComplete="off" className="loginForm">
+                                    <TextField type="email" onChange={saveEmailValue} id="outlined-basic" label="Correo Electronico" variant="outlined" />
+                                    <TextField type="password" onChange={savePassValue}  id="outlined-basic" label="Contraseña" variant="outlined" />
+                                    <Button variant="contained" color="secondary" onClick={validateLogin}>COMENZAR A CREAR PLAYLISTS</Button>
                                 <Button href="">?HAS OLVIDADO LA CONTRASEÑA?</Button>
                                 <Typography>
                                     ?NO TIENES CUENTA?
                                 </Typography>
                                 <Button variant="contained" href="">REGISTRATE</Button>
+                                </form>
                             </CardContent>
                         </Card>
                     </Route>
                     <Route path="/playlist" component={PList} />
                 </Switch>
             </div>
-        </Router>);
+        </Router>
+        );
 }
-
-
 export default Login;

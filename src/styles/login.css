@@ -1,0 +1,21 @@
+img{
+    height: 50px;
+    width: 55,398457583547557840616966580975px;
+}
+
+*{
+    text-align: center;
+}
+.loginCardContent{
+    margin: 100px 120px 0px 120px;
+}
+.loginForm{
+    padding: 0px 70px 0px 70px;
+    display: flex;
+    flex-direction: column;
+}
+.loginHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
