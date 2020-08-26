@@ -9,24 +9,25 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory
+  Redirect
 } from "react-router-dom";
 
 function App() {
-  const history = useHistory()
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/loginerror">
+          <Route exact path="/loginerror">
             <Error />
           </Route>
-          <Route path="/playlist">
+          <Route exact path="/playlist">
             <PList />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Login />
           </Route>
+          <Redirect exact from="" to="/login" />
+          <Redirect exact from="/" to="/login" />
         </Switch>
       </div>
     </Router>

@@ -14,18 +14,18 @@ import {
     Switch,
     Route,
     Link,
-    useHistory
+    Redirect
 } from "react-router-dom";
 
 const LoginError = () => {
     
-    const history = useHistory();
     return(
         <Router>
             <div>
                 <Switch>
-                    <Route exact path="/LoginError">
-                        <AppBar>
+                    <Route exact path="/loginerror">
+                        <Redirect exact from="/loginerror" to="/loginerror" />
+                        <AppBar className="loginHeader">
                             <Link to="/login">
                                 <img src={matelogo} alt="matea logo"/>
                                 <Typography variant="h6" noWrap>
@@ -33,15 +33,15 @@ const LoginError = () => {
                                 </Typography>
                             </Link>
                         </AppBar>
-                        <Card>
+                        <Card className="loginCardContent">
                             <CardContent>
                                 <img src={redlock} alt="matea logo"/>
-                                <h2>mmm... algo no salio bien</h2>
-                                <p>Debes estar autenticado para acceder a esta pagina</p>
+                                <h2>mmm... algo no salió bien</h2>
+                                <p>Debes estar autenticado para acceder a esta página</p>
                             </CardContent>
                         </Card>
                     </Route>
-                    <Route path='/' component={Login}></Route>
+                    <Route exact path='/login' component={Login}></Route>
                 </Switch>
             </div>
         </Router>

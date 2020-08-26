@@ -88,8 +88,8 @@ const Login = () => {
                             </CardContent>
                         </Card>
                     </Route>
-                    <Route path="/playlist" component={PList} />
-                    <Route path="/loginerror" component={error} />
+                    <Route exact path="/playlist" component={PList} />
+                    <Route exact path="/loginerror" component={error} />
                 </Switch>
             </div>
         </Router>

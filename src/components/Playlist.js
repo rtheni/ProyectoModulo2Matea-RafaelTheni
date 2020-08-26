@@ -9,10 +9,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
+import AddCircle from '@material-ui/icons/AddCircle';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -28,12 +29,14 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
 
 function Playlist() {
     const [inputSearch, setSearchValue] = useState("");
     const [filterSong, setArrayValue] = useState([]);
+    const [addedSong, setArrayAddedValue] = useState([]);
 
     const saveSearchValue = (e) => {
         setSearchValue(e.target.value);
@@ -50,23 +53,27 @@ function Playlist() {
     }
 
     const validateSong = () => {
-        setArrayValue(null);
         setArrayValue(songDataList.filter(validateSearch));
         console.log(filterSong);
         if (filterSong.length > 0){
             console.log("si tiene canciones")
         }else {
-
             console.log("no tiene canciones")
         }
     }
+    const addSongPlaylist = (song) => {
+        setArrayAddedValue([...addedSong, song]);
+        console.log(addedSong)
+    }
 
+    
     return (
         <Router>
             <div>
                 <Switch>
                     <Route exact path="/playlist">
-                        <AppBar>
+                        <Redirect exact from="/playlist" to="/playlist" />
+                        <AppBar className="loginHeader">
                             <Toolbar>
                                 <Link to="/login">
                                     <img src={matelogo} alt="matea logo"/>
@@ -88,7 +95,7 @@ function Playlist() {
                         <form noValidate autoComplete="off">
                             <TextField id="outlined-basic" label="Buscar" variant="outlined" onChange={saveSearchValue}/>
                         </form>
-                        <Card>
+                        <Card className="loginCardContent">
                             <h2>Resultados</h2>
                             <CardContent>
                                 <TableContainer component={Paper}>
@@ -98,30 +105,26 @@ function Playlist() {
                                                 <TableCell>Nombre</TableCell>
                                                 <TableCell>Artista</TableCell>
                                                 <TableCell>Album</TableCell>
-                                                <TableCell>Duracion</TableCell>
+                                                <TableCell>Duración</TableCell>
                                                 <TableCell align="right">Agregar</TableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             {filterSong.map ((song) => (
                                                 <TableRow key={song.uuid}>
-                                                    <TableCell component="th" scope="row">{song.name}</TableCell>
+                                                    <TableCell component="th" scope="row"><img src={song.artist.coverUrl} alt="matea logo"/>{song.name}</TableCell>
                                                     <TableCell>{song.artist.name}</TableCell>
                                                     <TableCell>{song.album}</TableCell>
                                                     <TableCell>{song.duration}</TableCell>
-                                                    <TableCell align="right"><button>agregar</button></TableCell>
+                                                    <TableCell align="right"><IconButton color="secondary" aria-label="addsong" onClick={() => addSongPlaylist(song)} component="span"><AddCircle fontSize="large"/></IconButton></TableCell>
                                                 </TableRow>
                                             ))}
-                                                <div><p>No hay resultados: utiliza la barra de busqueda para encontrar canciones</p></div>
-                                        
-                                        
-                                            
                                         </TableBody>
                                     </Table>
                                 </TableContainer>
                             </CardContent>
                         </Card>
-                        <Card>
+                        <Card className="loginCardContent">
                             <h2>Tu playlist</h2>
                             <CardContent>
                                 <TableContainer component={Paper}>
@@ -130,20 +133,21 @@ function Playlist() {
                                             <TableRow>
                                                 <TableCell>Nombre</TableCell>
                                                 <TableCell>Artista</TableCell>
-                                                <TableCell>Duracion</TableCell>
+                                                <TableCell>Duración</TableCell>
                                                 <TableCell>Cant. Votos</TableCell>
                                                 <TableCell align="right">Votar</TableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
-                                            <div><h2>UPS! TU PLAYLIST AUN ESTA VACIA</h2><p>Comienza a agregar canciones</p></div>
-                                            <TableRow key="">
-                                            <TableCell component="th" scope="row"></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell align="right"></TableCell>
-                                            </TableRow>
+                                            {addedSong.map ((song) => (
+                                                <TableRow key={song.uuid}>
+                                                    <TableCell component="th" scope="row"><img src={song.artist.coverUrl} alt="matea logo"/>{song.name}</TableCell>
+                                                    <TableCell>{song.artist.name}</TableCell>
+                                                    <TableCell>{song.duration}</TableCell>
+                                                    <TableCell>0</TableCell>
+                                                    <TableCell align="right"><button>+</button><button>-</button></TableCell>
+                                                </TableRow>
+                                            ))}
                                         </TableBody>
                                     </Table>
                                 </TableContainer>
@@ -151,7 +155,7 @@ function Playlist() {
                         </Card>
                         </div>
                     </Route>
-                    <Route path="/" component={Login} />
+                    <Route exact path="/login" component={Login} />
                 </Switch>
             </div>
         </Router>
