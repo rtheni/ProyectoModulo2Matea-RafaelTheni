@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/precache-manifest.8a206327beac325cd477c143ab885b29.js"
+  "/ProyectoModulo2Matea-RafaelTheni/precache-manifest.d373bc75a7d8814b1ee6cb398a4903af.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -33,7 +33,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/index.html"), {
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/ProyectoModulo2Matea-RafaelTheni/index.html"), {
   
   blacklist: [/^\/_/,/\/[^/?]+\.[^/]+$/],
 });

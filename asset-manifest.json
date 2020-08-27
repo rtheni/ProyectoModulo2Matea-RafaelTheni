@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/css/main.e67fe502.chunk.css",
-    "main.js": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/js/main.fff3b096.chunk.js",
-    "main.js.map": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/js/main.fff3b096.chunk.js.map",
-    "runtime-main.js": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/js/runtime-main.007e9fd5.js",
-    "runtime-main.js.map": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/js/runtime-main.007e9fd5.js.map",
-    "static/js/2.dba7d7a7.chunk.js": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/js/2.dba7d7a7.chunk.js",
-    "static/js/2.dba7d7a7.chunk.js.map": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/js/2.dba7d7a7.chunk.js.map",
-    "index.html": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/index.html",
-    "precache-manifest.8a206327beac325cd477c143ab885b29.js": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/precache-manifest.8a206327beac325cd477c143ab885b29.js",
-    "service-worker.js": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/service-worker.js",
-    "static/css/main.e67fe502.chunk.css.map": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/css/main.e67fe502.chunk.css.map",
-    "static/js/2.dba7d7a7.chunk.js.LICENSE.txt": "/ProyectoModulo1Matea-MatiasRivas-RafaelTheni/static/js/2.dba7d7a7.chunk.js.LICENSE.txt"
+    "main.css": "/ProyectoModulo2Matea-RafaelTheni/static/css/main.e67fe502.chunk.css",
+    "main.js": "/ProyectoModulo2Matea-RafaelTheni/static/js/main.14bf8a87.chunk.js",
+    "main.js.map": "/ProyectoModulo2Matea-RafaelTheni/static/js/main.14bf8a87.chunk.js.map",
+    "runtime-main.js": "/ProyectoModulo2Matea-RafaelTheni/static/js/runtime-main.e1424c58.js",
+    "runtime-main.js.map": "/ProyectoModulo2Matea-RafaelTheni/static/js/runtime-main.e1424c58.js.map",
+    "static/js/2.dba7d7a7.chunk.js": "/ProyectoModulo2Matea-RafaelTheni/static/js/2.dba7d7a7.chunk.js",
+    "static/js/2.dba7d7a7.chunk.js.map": "/ProyectoModulo2Matea-RafaelTheni/static/js/2.dba7d7a7.chunk.js.map",
+    "index.html": "/ProyectoModulo2Matea-RafaelTheni/index.html",
+    "precache-manifest.d373bc75a7d8814b1ee6cb398a4903af.js": "/ProyectoModulo2Matea-RafaelTheni/precache-manifest.d373bc75a7d8814b1ee6cb398a4903af.js",
+    "service-worker.js": "/ProyectoModulo2Matea-RafaelTheni/service-worker.js",
+    "static/css/main.e67fe502.chunk.css.map": "/ProyectoModulo2Matea-RafaelTheni/static/css/main.e67fe502.chunk.css.map",
+    "static/js/2.dba7d7a7.chunk.js.LICENSE.txt": "/ProyectoModulo2Matea-RafaelTheni/static/js/2.dba7d7a7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.007e9fd5.js",
+    "static/js/runtime-main.e1424c58.js",
     "static/js/2.dba7d7a7.chunk.js",
     "static/css/main.e67fe502.chunk.css",
-    "static/js/main.fff3b096.chunk.js"
+    "static/js/main.14bf8a87.chunk.js"
   ]
 }
