@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Login from './Login'
-import styles from '../styles/login.css'
+import styles from '../styles/styles.css';
 
 import songDataList from '../database/songData.json';
 
@@ -23,6 +23,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
+import Hidden from "@material-ui/core/Hidden";
 
 import matelogo from '../img/matea_logo.png';
 
@@ -98,7 +99,7 @@ function Playlist() {
                         </AppBar>
                         <div className="playlistContent">
                         <form noValidate autoComplete="off">
-                            <TextField id="outlined-basic" label="Buscar" variant="outlined" onChange={saveSearchValue}/>
+                            <TextField id="outlined-basic" label="Buscar" variant="outlined" onChange={saveSearchValue} className="playlistInput"/>
                         </form>
                         <Card className="loginCardContent">
                             <h2>Resultados</h2>
@@ -109,8 +110,8 @@ function Playlist() {
                                             <TableRow>
                                                 <TableCell>Nombre</TableCell>
                                                 <TableCell>Artista</TableCell>
-                                                <TableCell>Álbum</TableCell>
-                                                <TableCell>Duración</TableCell>
+                                                <Hidden smDown><TableCell>Álbum</TableCell></Hidden>
+                                                <Hidden smDown><TableCell>Duración</TableCell></Hidden>
                                                 <TableCell align="right">Agregar</TableCell>
                                             </TableRow>
                                         </TableHead>
@@ -119,8 +120,8 @@ function Playlist() {
                                                 <TableRow key={song.uuid}>
                                                     <TableCell component="th" scope="row"><img src={song.artist.coverUrl} alt="matea logo"/>{song.name}</TableCell>
                                                     <TableCell>{song.artist.name}</TableCell>
-                                                    <TableCell>{song.album}</TableCell>
-                                                    <TableCell>{song.duration}</TableCell>
+                                                    <Hidden smDown><TableCell>{song.album}</TableCell></Hidden>
+                                                    <Hidden smDown><TableCell>{song.duration}</TableCell></Hidden>
                                                     <TableCell align="right"><IconButton color="secondary" aria-label="addsong" onClick={() => addSongPlaylist(song)} component="span"><AddCircle fontSize="large"/></IconButton></TableCell>
                                                 </TableRow>
                                             ))}
@@ -138,8 +139,8 @@ function Playlist() {
                                             <TableRow>
                                                 <TableCell>Nombre</TableCell>
                                                 <TableCell>Artista</TableCell>
-                                                <TableCell>Duración</TableCell>
-                                                <TableCell>Cant. Votos</TableCell>
+                                                <Hidden smDown><TableCell>Duración</TableCell></Hidden>
+                                                <Hidden smDown><TableCell>Cant. Votos</TableCell></Hidden>
                                                 <TableCell align="right">Votar</TableCell>
                                             </TableRow>
                                         </TableHead>
@@ -148,8 +149,8 @@ function Playlist() {
                                                 <TableRow key={song.uuid}>
                                                     <TableCell component="th" scope="row"><img src={song.artist.coverUrl} alt="matea logo"/>{song.name}</TableCell>
                                                     <TableCell>{song.artist.name}</TableCell>
-                                                    <TableCell>{song.duration}</TableCell>
-                                                    <TableCell>0</TableCell>
+                                                    <Hidden smDown><TableCell>{song.duration}</TableCell></Hidden>
+                                                    <Hidden smDown><TableCell>0</TableCell></Hidden>
                                                     <TableCell align="right"><button>+</button><button>-</button></TableCell>
                                                 </TableRow>
                                             ))}

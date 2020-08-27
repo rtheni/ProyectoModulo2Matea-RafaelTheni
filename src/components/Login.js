@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PList from './Playlist.js';
 import error from './LoginError.js';
-import styles from '../styles/login.css';
+import styles from '../styles/styles.css';
 
 import userDataList from '../database/userData.json';
 
