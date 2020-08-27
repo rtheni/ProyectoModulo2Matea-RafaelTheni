@@ -5,6 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Toolbar from '@material-ui/core/Toolbar';
+import Box from '@material-ui/core/Box';
 
 import matelogo from '../img/matea_logo.png';
 import redlock from '../img/red-lock.gif';
@@ -25,13 +27,17 @@ const LoginError = () => {
                 <Switch>
                     <Route exact path="/loginerror">
                         <Redirect exact from="/loginerror" to="/loginerror" />
-                        <AppBar className="loginHeader">
-                            <Link to="/login">
-                                <img src={matelogo} alt="matea logo"/>
-                                <Typography variant="h6" noWrap>
-                                    Mateify
-                                </Typography>
-                            </Link>
+                        <AppBar>
+                            <Toolbar className="loginHeader">
+                                <Link to="/login">
+                                    <img src={matelogo} alt="matea logo"/>
+                                </Link>
+                                <Link to="/login">
+                                    <Box fontSize="35px" fontFamily="Righteous">
+                                        Mateify
+                                    </Box>
+                                </Link>
+                            </Toolbar>
                         </AppBar>
                         <Card className="loginCardContent">
                             <CardContent>

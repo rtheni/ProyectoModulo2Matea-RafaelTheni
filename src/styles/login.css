@@ -24,3 +24,19 @@ body{
     flex-direction: row;
     justify-content: center;
 }
+.playlistHeaderIcon{
+    position: absolute;
+    right: 20px;
+}
+.playlistHeaderLogo{
+    height: 35px;
+    width: 38px;
+    top: 12px;
+    position: absolute;
+    left: 20px;
+}
+.playlistHeaderTitle{
+    position: absolute;
+    top: 12px;
+    left: 45%
+}

@@ -22,6 +22,7 @@ import {
     Route,
     useHistory,
 } from "react-router-dom";
+import { Box } from '@material-ui/core';
 
 
 const Login = () => {
@@ -64,9 +65,9 @@ const Login = () => {
                         <AppBar>
                             <Toolbar className="loginHeader">
                                 <img src={matelogo} alt="matea logo"/>
-                                <Typography variant="h6" noWrap>
+                                <Box fontSize="35px" fontFamily="Righteous">
                                     Mateify
-                                </Typography>
+                                </Box>
                             </Toolbar>
                         </AppBar>
                         <Card className="loginCardContent">

@@ -22,6 +22,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 
 import matelogo from '../img/matea_logo.png';
 
@@ -76,11 +77,14 @@ function Playlist() {
                         <AppBar className="loginHeader">
                             <Toolbar>
                                 <Link to="/login">
-                                    <img src={matelogo} alt="matea logo"/>
-                                    <Typography variant="h6" noWrap>
-                                        Mateify
-                                    </Typography>
+                                    <img src={matelogo} alt="matea logo" className="playlistHeaderLogo"/>
                                 </Link>
+                                <Link to="/login">
+                                    <Box fontSize="35px" fontFamily="Righteous" className="playlistHeaderTitle">
+                                        Mateify
+                                    </Box>
+                                </Link>
+                                <div className="playlistHeaderIcon">
                                 <IconButton
                                     aria-label="account of current user"
                                     aria-controls="menu-appbar"
@@ -89,6 +93,7 @@ function Playlist() {
                                 >
                                     <AccountCircle />
                                 </IconButton>
+                                </div>
                             </Toolbar>
                         </AppBar>
                         <div className="playlistContent">
@@ -104,7 +109,7 @@ function Playlist() {
                                             <TableRow>
                                                 <TableCell>Nombre</TableCell>
                                                 <TableCell>Artista</TableCell>
-                                                <TableCell>Album</TableCell>
+                                                <TableCell>Álbum</TableCell>
                                                 <TableCell>Duración</TableCell>
                                                 <TableCell align="right">Agregar</TableCell>
                                             </TableRow>
